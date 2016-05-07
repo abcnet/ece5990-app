@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import Foundation
+import Darwin.C
 class SecondViewController: UIViewController {
     
     // Create a reference to a Firebase location
@@ -36,18 +37,21 @@ class SecondViewController: UIViewController {
                 let ipsubstr = str.substringFromIndex(ipStart!)
                 let timesubstr = str.substringFromIndex(timeStart!)
                 let ip = ipsubstr.substringToIndex((ipsubstr.rangeOfString("\"")?.startIndex)!)
+                SharedVars.ip = ip
                 let timeStr = timesubstr.substringToIndex((timesubstr.rangeOfString("\"")?.startIndex)!)
                 self.secondViewText.text = ip
                 self.secondViewSubtitle.text = timeStr
             }
             
+            
+            
+            
+            
 
             
         })
         
-        
-        
-        
+
     }
 
     override func didReceiveMemoryWarning() {
