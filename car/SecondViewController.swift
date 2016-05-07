@@ -8,7 +8,7 @@
 
 import UIKit
 import Firebase
-
+import Foundation
 class SecondViewController: UIViewController {
     
     // Create a reference to a Firebase location
@@ -29,15 +29,20 @@ class SecondViewController: UIViewController {
 //            self.secondViewSubtitle.text = 
             let str = "\(snapshot.value)"
             print(str)
-            let ipStart = str.rangeOfString("ip = \"")?.endIndex
-            let timeStart = str.rangeOfString("time = \"")?.endIndex
+            if(str != "<null>"){
+                let ipStart = str.rangeOfString("ip = \"")?.endIndex
+                let timeStart = str.rangeOfString("time = \"")?.endIndex
+                
+                let ipsubstr = str.substringFromIndex(ipStart!)
+                let timesubstr = str.substringFromIndex(timeStart!)
+                let ip = ipsubstr.substringToIndex((ipsubstr.rangeOfString("\"")?.startIndex)!)
+                let timeStr = timesubstr.substringToIndex((timesubstr.rangeOfString("\"")?.startIndex)!)
+                self.secondViewText.text = ip
+                self.secondViewSubtitle.text = timeStr
+            }
+            
 
-            let ipsubstr = str.substringFromIndex(ipStart!)
-            let timesubstr = str.substringFromIndex(timeStart!)
-            let ip = ipsubstr.substringToIndex((ipsubstr.rangeOfString("\"")?.startIndex)!)
-            let timeStr = timesubstr.substringToIndex((timesubstr.rangeOfString("\"")?.startIndex)!)
-            self.secondViewText.text = ip
-            self.secondViewSubtitle.text = timeStr
+            
         })
         
         
