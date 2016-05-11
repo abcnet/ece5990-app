@@ -47,15 +47,27 @@ class SecondViewController: UIViewController {
                 print(SharedVars.ip)
                 let client:TCPClient = TCPClient(addr: SharedVars.ip, port: 8765)
                 (_, _) = client.connect(timeout: 10)
-                (_, _) = client.send(str:"GET / HTTP/1.0\n\n")
-                let rawData = client.read(1024*10)
-                let data = try NSData(bytes: rawData!, length: rawData!.count)
+                
+                var rawData = client.read(1024*10)
+                var data = try NSData(bytes: rawData!, length: rawData!.count)
                 
                 if let str = String(data: data, encoding: NSUTF8StringEncoding) {
                     print(str)
                 } else {
                     print("not a valid UTF-8 sequence")
                 }
+                (_, _) = client.send(str:"HELO app\r\n")
+                 rawData = client.read(1024*10)
+                 data = try NSData(bytes: rawData!, length: rawData!.count)
+                
+                if let str = String(data: data, encoding: NSUTF8StringEncoding) {
+                    print(str)
+                } else {
+                    print("not a valid UTF-8 sequence")
+                }
+
+                
+                
                 
                 (_, _) = client.close()
             }catch{
