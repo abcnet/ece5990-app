@@ -43,7 +43,24 @@ class SecondViewController: UIViewController {
             }
             
             
-            
+            do{
+                print(SharedVars.ip)
+                let client:TCPClient = TCPClient(addr: SharedVars.ip, port: 8765)
+                (_, _) = client.connect(timeout: 10)
+                (_, _) = client.send(str:"GET / HTTP/1.0\n\n")
+                let rawData = client.read(1024*10)
+                let data = try NSData(bytes: rawData!, length: rawData!.count)
+                
+                if let str = String(data: data, encoding: NSUTF8StringEncoding) {
+                    print(str)
+                } else {
+                    print("not a valid UTF-8 sequence")
+                }
+                
+                (_, _) = client.close()
+            }catch{
+                
+            }
             
             
 
@@ -69,19 +86,7 @@ class SecondViewController: UIViewController {
 //        socket.connect()
         
         
-//        var client:TCPClient = TCPClient(addr: "127.0.0.1", port: 8765)
-//        var (success, errmsg) = client.connect(timeout: 10)
-//        (success, errmsg) = client.send(str:"GET / HTTP/1.0\n\n")
-//        var rawData = client.read(1024*10)
-//        let data = NSData(bytes: rawData!, length: rawData!.count)
-//        let str = NSString(data: data, encoding: NSUTF8StringEncoding)
-//        if let str = String(data: data, encoding: NSUTF8StringEncoding) {
-//            print(str)
-//        } else {
-//            print("not a valid UTF-8 sequence")
-//        }
-//        
-//        (success, errmsg) = client.close()
+        
         
 
     }
