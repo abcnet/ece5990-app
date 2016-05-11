@@ -8,8 +8,7 @@
 
 import UIKit
 import Firebase
-import Foundation
-import Darwin.C
+import SocketIOClientSwift
 class SecondViewController: UIViewController {
     
     // Create a reference to a Firebase location
@@ -50,6 +49,39 @@ class SecondViewController: UIViewController {
 
             
         })
+//        
+//        let socket = SocketIOClient(socketURL: NSURL(string: "127.0.0.1:8765")!, options: [.Log(true), .ForcePolling(true)])
+//        
+//        socket.on("connect") {data, ack in
+//            print("socket connected")
+//        }
+//        
+//        socket.on("currentAmount") {data, ack in
+//            if let cur = data[0] as? Double {
+//                socket.emitWithAck("canUpdate", cur)(timeoutAfter: 0) {data in
+//                    socket.emit("update", ["amount": cur + 2.50])
+//                }
+//                
+//                ack.with("Got your currentAmount", "dude")
+//            }
+//        }
+//        
+//        socket.connect()
+        
+        
+//        var client:TCPClient = TCPClient(addr: "127.0.0.1", port: 8765)
+//        var (success, errmsg) = client.connect(timeout: 10)
+//        (success, errmsg) = client.send(str:"GET / HTTP/1.0\n\n")
+//        var rawData = client.read(1024*10)
+//        let data = NSData(bytes: rawData!, length: rawData!.count)
+//        let str = NSString(data: data, encoding: NSUTF8StringEncoding)
+//        if let str = String(data: data, encoding: NSUTF8StringEncoding) {
+//            print(str)
+//        } else {
+//            print("not a valid UTF-8 sequence")
+//        }
+//        
+//        (success, errmsg) = client.close()
         
 
     }

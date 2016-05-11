@@ -5,5 +5,6 @@ use_frameworks!
 
 target 'car' do
     pod 'Firebase', '>= 2.5.1'
+    # pod 'Socket.IO-Client-Swift', '~> 6.1.1' # Or latest version
 end
 
