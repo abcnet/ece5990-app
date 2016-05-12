@@ -17,9 +17,16 @@ class SecondViewController: UIViewController {
     @IBOutlet weak var slider: UISlider!
     @IBOutlet weak var sliderLabel: UILabel!
    
+    @IBOutlet weak var ipTextFiled: UILabel!
+    @IBOutlet weak var statusTextField: UILabel!
 
-    @IBOutlet weak var secondViewText: UILabel!
-    @IBOutlet weak var secondViewSubtitle: UILabel!
+    @IBOutlet weak var forwardButton: UIButton!
+    @IBOutlet weak var ccwButton: UIButton!
+    @IBOutlet weak var cwButton: UIButton!
+   
+    
+    var stringBuffer = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -38,62 +45,63 @@ class SecondViewController: UIViewController {
                 let ipsubstr = str.substringFromIndex(ipStart!)
                 let timesubstr = str.substringFromIndex(timeStart!)
                 let ip = ipsubstr.substringToIndex((ipsubstr.rangeOfString("\"")?.startIndex)!)
-                SharedVars.assignIP(self.secondViewText, ip: ip)
+                SharedVars.assignIP(self.ipTextFiled, ip: ip)
 //                SharedVars.hasIP = true
                 let timeStr = timesubstr.substringToIndex((timesubstr.rangeOfString("\"")?.startIndex)!)
 //                self.secondViewText.text = ip
                 
-                SharedVars.assignTimeStamp(self.secondViewSubtitle, timestamp: timeStr)
+                SharedVars.assignTimeStamp(self.statusTextField, timestamp: timeStr)
 //                print(ip)
 //                print(timeStr)
                 sleep(1)
             }
             
-            sleep(1)
-            
-            do{
-                print(SharedVars.ip)
-                let client:TCPClient = TCPClient(addr: SharedVars.ip, port: 8765)
-                var (success, errmsg) = client.connect(timeout: 10)
-                print(success)
-                print(errmsg)
-                var rawData = client.read(1024*10)
-                if (rawData  != nil){
-                    let data = NSData(bytes: rawData!, length: rawData!.count)
-                        
-                    
-                    
-                    if let str = String(data: data, encoding: NSUTF8StringEncoding) {
-                        print(str)
-                    } else {
-                        print("not a valid UTF-8 sequence")
-                    }
-                }else{
-                    print("raw data is nil")
-                }
-                
-                (success, errmsg) = client.send(str:"-1 1 5\r\n")
-                print(success)
-                print(errmsg)
-                rawData = client.read(1024*10)
-                if (rawData  != nil){
-
-                    
-                    let data = NSData(bytes: rawData!, length: rawData!.count)
-                
-                    if let str = String(data: data, encoding: NSUTF8StringEncoding) {
-                        print(str)
-                    } else {
-                        print("not a valid UTF-8 sequence")
-                    }
-                }else{
-                    print("raw data is nil")
-                }
-                
-                
-                
-                (success, errmsg) = client.close()
-            }
+//            sleep(1)
+//            
+//            do{
+//                print(SharedVars.ip)
+//                let client:TCPClient = TCPClient(addr: SharedVars.ip, port: 8765)
+//                var (success, errmsg) = client.connect(timeout: 10)
+//                print(success)
+//                print(errmsg)
+//                var rawData = client.read(1024*10)
+//                if (rawData  != nil){
+//                    let data = NSData(bytes: rawData!, length: rawData!.count)
+//                        
+//                    
+//                    
+//                    if let str = String(data: data, encoding: NSUTF8StringEncoding) {
+//                        print(str)
+//                    } else {
+//                        print("not a valid UTF-8 sequence")
+//                    }
+//                }else{
+//                    print("raw data is nil")
+//                }
+//                
+//                (success, errmsg) = client.send(str:"-1 1 5\r\n")
+//                print(success)
+//                print(errmsg)
+//                rawData = client.read(1024*10)
+//                if (rawData  != nil){
+//
+//                    
+//                    let data = NSData(bytes: rawData!, length: rawData!.count)
+//                
+//                    if let str = String(data: data, encoding: NSUTF8StringEncoding) {
+//                        print(str)
+//                       
+//                    } else {
+//                        print("not a valid UTF-8 sequence")
+//                    }
+//                }else{
+//                    print("raw data is nil")
+//                }
+//                
+//                
+//                
+//                (success, errmsg) = client.close()
+//            }
             
 
             
@@ -128,17 +136,7 @@ class SecondViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func readUntilEndOfLine(client: TCPClient) -> String{
-        let rawData = client.read(1024*10)
-        var data = try NSData(bytes: rawData!, length: rawData!.count)
-        // not finished!!!
-        if let str = String(data: data, encoding: NSUTF8StringEncoding) {
-            return str
-        } else {
-            return ""
-        }
-
-    }
+    
     
     @IBAction func sliderChanged(sender: AnyObject) {
         if(slider.value > 60.5){
@@ -147,7 +145,81 @@ class SecondViewController: UIViewController {
             sliderLabel.text = String(Int(slider.value)) + " seconds"
         }
     }
+    func readUntilEndOfLine(client: TCPClient) -> String{
+        self.stringBuffer = ""
+        var attempts = 20
+        while(attempts > 0){
+            attempts -= 1
+            let rawData = client.read(1024*10)
+            if (rawData  != nil){
+                let data = NSData(bytes: rawData!, length: rawData!.count)
+                
+                
+                
+                if let str = String(data: data, encoding: NSUTF8StringEncoding) {
+                    self.stringBuffer += str
+//                    print(str)
+                    if(self.stringBuffer.containsString("\r\n")){
+//                        print(str)
+                        
+                        let range = self.stringBuffer.rangeOfString("\r\n")
+                        let response = self.stringBuffer.substringToIndex((range?.startIndex)!)
+                        self.stringBuffer = self.stringBuffer.substringFromIndex((range?.endIndex)!)
+                        return response
+                    }
+                } else {
+                    print("not a valid UTF-8 sequence")
+                }
+            }else{
+                print("raw data is nil")
+            }
+
+        }
+        print("failed to read after 20 attemps, current buffer is " + self.stringBuffer)
+        return ""
+        
+    }
+    func controlServo(left: Int, right: Int, lastingTime: Int) -> Bool{
+        let client:TCPClient = TCPClient(addr: SharedVars.ip, port: 8765)
+        var attempts = 10
+        var ok = false
+        while(!ok && attempts > 0){
+            attempts -= 1
+            var (success, errmsg) = client.connect(timeout: 10)
+            if(success){
+                (success, errmsg) = client.send(str:"-1 1 5\r\n")
+                
+                if(success){
+                    let response = readUntilEndOfLine(client)
+                    (success, errmsg) = client.close()
+                    if (response != ""){
+                        ok = true
+                        self.statusTextField.text = response
+                        return true
+                    }
+                }
+            }
+
+        }
+        self.statusTextField.text = "Failed to send command after 10 attempts"
+        return false
+        
+        
+        
+        
+        
+    }
     
+    @IBAction func forwardButtonClicked(sender: AnyObject) {
+        if(SharedVars.hasIP){
+            controlServo(-1, right: 1, lastingTime: Int(self.slider.value))
+            
+            
+            
+        }else{
+            self.statusTextField.text = "No IP retrieved"
+        }
+    }
 
 
 }

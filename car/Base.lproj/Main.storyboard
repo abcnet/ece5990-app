@@ -61,8 +61,11 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Retrieving timestamp..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NDk-cv-Gan">
-                                <rect key="frame" x="226.5" y="78" width="149" height="17"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Retrieving timestamp..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NDk-cv-Gan">
+                                <rect key="frame" x="113" y="78" width="374" height="17"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="374" id="ege-g5-rHc"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -82,6 +85,28 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UGB-7L-LcQ">
+                                <rect key="frame" x="102" y="264" width="68" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="68" id="Ayl-DY-hCe"/>
+                                </constraints>
+                                <state key="normal" title="Backward"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mz6-cj-nho">
+                                <rect key="frame" x="189" y="214" width="30" height="30"/>
+                                <state key="normal" title="CW"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oLi-eW-njp">
+                                <rect key="frame" x="55" y="214" width="36" height="30"/>
+                                <state key="normal" title="CCW"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MMH-Sj-oAb">
+                                <rect key="frame" x="108" y="163" width="56" height="30"/>
+                                <state key="normal" title="Forward"/>
+                                <connections>
+                                    <action selector="forwardButtonClicked:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="Be6-X7-v4n"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -89,19 +114,30 @@
                             <constraint firstItem="zEq-FU-wV5" firstAttribute="top" secondItem="L7p-HK-0SC" secondAttribute="bottom" constant="8" id="A0Q-h2-6OD"/>
                             <constraint firstAttribute="trailingMargin" secondItem="aAL-O9-kbP" secondAttribute="trailing" id="B8b-PV-9Dx"/>
                             <constraint firstItem="NDk-cv-Gan" firstAttribute="top" secondItem="zEq-FU-wV5" secondAttribute="bottom" constant="8" symbolic="YES" id="Day-4N-Vmt"/>
+                            <constraint firstItem="Mz6-cj-nho" firstAttribute="top" secondItem="MMH-Sj-oAb" secondAttribute="bottom" constant="21" id="FNV-kH-EKj"/>
                             <constraint firstItem="NDk-cv-Gan" firstAttribute="centerX" secondItem="zEq-FU-wV5" secondAttribute="centerX" id="JgO-Fn-dHn"/>
+                            <constraint firstItem="UGB-7L-LcQ" firstAttribute="centerX" secondItem="MMH-Sj-oAb" secondAttribute="centerX" id="KKv-Us-Noi"/>
+                            <constraint firstItem="UGB-7L-LcQ" firstAttribute="top" secondItem="oLi-eW-njp" secondAttribute="bottom" constant="20" id="L8c-VN-qao"/>
                             <constraint firstItem="aAL-O9-kbP" firstAttribute="leading" secondItem="AZ3-dn-imh" secondAttribute="trailing" constant="8" id="Mik-31-R8c"/>
+                            <constraint firstItem="MMH-Sj-oAb" firstAttribute="top" secondItem="aAL-O9-kbP" secondAttribute="bottom" constant="30" id="OWl-L8-FFt"/>
                             <constraint firstItem="AZ3-dn-imh" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leadingMargin" id="PMM-Tm-suN"/>
+                            <constraint firstItem="oLi-eW-njp" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leadingMargin" constant="35" id="UN0-Rk-XbX"/>
+                            <constraint firstItem="Mz6-cj-nho" firstAttribute="leading" secondItem="oLi-eW-njp" secondAttribute="trailing" constant="98" id="Wjr-XX-FQM"/>
+                            <constraint firstItem="oLi-eW-njp" firstAttribute="top" secondItem="MMH-Sj-oAb" secondAttribute="bottom" constant="21" id="fHh-7F-REq"/>
                             <constraint firstItem="AZ3-dn-imh" firstAttribute="top" secondItem="NDk-cv-Gan" secondAttribute="bottom" constant="12" id="kmH-mb-t67"/>
+                            <constraint firstItem="MMH-Sj-oAb" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leadingMargin" constant="88" id="qHY-eJ-uRG"/>
                             <constraint firstAttribute="centerX" secondItem="zEq-FU-wV5" secondAttribute="centerX" id="qqM-NS-xev"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" systemItem="favorites" id="cPa-gy-q4n"/>
                     <connections>
-                        <outlet property="secondViewSubtitle" destination="NDk-cv-Gan" id="tbV-Ik-X2f"/>
-                        <outlet property="secondViewText" destination="zEq-FU-wV5" id="qd7-ec-uz5"/>
+                        <outlet property="ccwButton" destination="oLi-eW-njp" id="Sml-2F-dUt"/>
+                        <outlet property="cwButton" destination="Mz6-cj-nho" id="ADA-oe-piT"/>
+                        <outlet property="forwardButton" destination="MMH-Sj-oAb" id="kuU-sx-ZBE"/>
+                        <outlet property="ipTextFiled" destination="zEq-FU-wV5" id="IQu-hi-0nE"/>
                         <outlet property="slider" destination="aAL-O9-kbP" id="RSZ-oX-tsy"/>
                         <outlet property="sliderLabel" destination="AZ3-dn-imh" id="LpW-nM-2sE"/>
+                        <outlet property="statusTextField" destination="NDk-cv-Gan" id="tYv-Cc-ply"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
