@@ -189,9 +189,11 @@ class SecondViewController: UIViewController {
             let client:TCPClient = TCPClient(addr: SharedVars.ip, port: 8765)
             var (success, errmsg) = client.connect(timeout: 3)
             if(success){
+                readUntilEndOfLine(client)
                 (success, errmsg) = client.send(str: String(left) + " " + String(right) + " " + String(lastingTime) + "\r\n")
                 
                 if(success){
+                    
                     let response = readUntilEndOfLine(client)
                     (success, errmsg) = client.close()
                     if (response != ""){
@@ -220,7 +222,6 @@ class SecondViewController: UIViewController {
     @IBAction func forwardButtonClicked(sender: AnyObject) {
         if(SharedVars.hasIP){
             controlServo(-1, right: 1, lastingTime: Int(self.slider.value))
-            
             
             
         }else{
