@@ -8,10 +8,11 @@
 import UIKit
 import Foundation
 class SharedVars {
-    static var hasIP = false
+    static var hasIP: Bool = false
     static var ip: String = ""
     
     static func assignIP(label:UILabel!, ip: String){
+        self.ip = ip
         label.text = ip
         hasIP = true
         print(ip)

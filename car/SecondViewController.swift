@@ -180,24 +180,31 @@ class SecondViewController: UIViewController {
         
     }
     func controlServo(left: Int, right: Int, lastingTime: Int) -> Bool{
-        let client:TCPClient = TCPClient(addr: SharedVars.ip, port: 8765)
+        
         var attempts = 10
         var ok = false
         while(!ok && attempts > 0){
             attempts -= 1
-            var (success, errmsg) = client.connect(timeout: 10)
+            print("Attemping to connect to " + SharedVars.ip)
+            let client:TCPClient = TCPClient(addr: SharedVars.ip, port: 8765)
+            var (success, errmsg) = client.connect(timeout: 3)
             if(success){
-                (success, errmsg) = client.send(str:"-1 1 5\r\n")
+                (success, errmsg) = client.send(str: String(left) + " " + String(right) + " " + String(lastingTime) + "\r\n")
                 
                 if(success){
                     let response = readUntilEndOfLine(client)
                     (success, errmsg) = client.close()
                     if (response != ""){
                         ok = true
+                        print(response)
                         self.statusTextField.text = response
                         return true
                     }
+                }else{
+                    print("failed to send command. " + errmsg)
                 }
+            }else{
+                print("Failed to connect. " + errmsg)
             }
 
         }
