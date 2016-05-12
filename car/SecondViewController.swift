@@ -36,44 +36,62 @@ class SecondViewController: UIViewController {
                 let ipsubstr = str.substringFromIndex(ipStart!)
                 let timesubstr = str.substringFromIndex(timeStart!)
                 let ip = ipsubstr.substringToIndex((ipsubstr.rangeOfString("\"")?.startIndex)!)
-                SharedVars.ip = ip
+                SharedVars.assignIP(self.secondViewText, ip: ip)
+//                SharedVars.hasIP = true
                 let timeStr = timesubstr.substringToIndex((timesubstr.rangeOfString("\"")?.startIndex)!)
-                self.secondViewText.text = ip
-                self.secondViewSubtitle.text = timeStr
+//                self.secondViewText.text = ip
+                
+                SharedVars.assignTimeStamp(self.secondViewSubtitle, timestamp: timeStr)
+//                print(ip)
+//                print(timeStr)
+                sleep(1)
             }
             
+            sleep(1)
             
             do{
                 print(SharedVars.ip)
                 let client:TCPClient = TCPClient(addr: SharedVars.ip, port: 8765)
-                (_, _) = client.connect(timeout: 10)
-                
+                var (success, errmsg) = client.connect(timeout: 10)
+                print(success)
+                print(errmsg)
                 var rawData = client.read(1024*10)
-                var data = try NSData(bytes: rawData!, length: rawData!.count)
-                
-                if let str = String(data: data, encoding: NSUTF8StringEncoding) {
-                    print(str)
-                } else {
-                    print("not a valid UTF-8 sequence")
+                if (rawData  != nil){
+                    let data = NSData(bytes: rawData!, length: rawData!.count)
+                        
+                    
+                    
+                    if let str = String(data: data, encoding: NSUTF8StringEncoding) {
+                        print(str)
+                    } else {
+                        print("not a valid UTF-8 sequence")
+                    }
+                }else{
+                    print("raw data is nil")
                 }
-                (_, _) = client.send(str:"HELO app\r\n")
-                 rawData = client.read(1024*10)
-                 data = try NSData(bytes: rawData!, length: rawData!.count)
                 
-                if let str = String(data: data, encoding: NSUTF8StringEncoding) {
-                    print(str)
-                } else {
-                    print("not a valid UTF-8 sequence")
-                }
+                (success, errmsg) = client.send(str:"-1 1 5\r\n")
+                print(success)
+                print(errmsg)
+                rawData = client.read(1024*10)
+                if (rawData  != nil){
 
+                    
+                    let data = NSData(bytes: rawData!, length: rawData!.count)
+                
+                    if let str = String(data: data, encoding: NSUTF8StringEncoding) {
+                        print(str)
+                    } else {
+                        print("not a valid UTF-8 sequence")
+                    }
+                }else{
+                    print("raw data is nil")
+                }
                 
                 
                 
-                (_, _) = client.close()
-            }catch{
-                
+                (success, errmsg) = client.close()
             }
-            
             
 
             
@@ -106,6 +124,18 @@ class SecondViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func readUntilEndOfLine(client: TCPClient) -> String{
+        let rawData = client.read(1024*10)
+        var data = try NSData(bytes: rawData!, length: rawData!.count)
+        // not finished!!!
+        if let str = String(data: data, encoding: NSUTF8StringEncoding) {
+            return str
+        } else {
+            return ""
+        }
+
     }
 
 
