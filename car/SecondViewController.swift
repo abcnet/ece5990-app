@@ -24,6 +24,7 @@ class SecondViewController: UIViewController {
     @IBOutlet weak var ccwButton: UIButton!
     @IBOutlet weak var cwButton: UIButton!
    
+    @IBOutlet weak var backwardButton: UIButton!
     
     var stringBuffer = ""
     
@@ -229,6 +230,35 @@ class SecondViewController: UIViewController {
         }
     }
 
+    @IBAction func backwardButtonClicked(sender: AnyObject) {
+        if(SharedVars.hasIP){
+            controlServo(1, right: -1, lastingTime: Int(self.slider.value))
+            
+            
+        }else{
+            self.statusTextField.text = "No IP retrieved"
+        }
+    }
+    
+    @IBAction func ccwButtonClicked(sender: AnyObject) {
+        if(SharedVars.hasIP){
+            controlServo(1, right: 1, lastingTime: Int(self.slider.value))
+            
+            
+        }else{
+            self.statusTextField.text = "No IP retrieved"
+        }
+    }
+    
+    @IBAction func cwButtonClicked(sender: AnyObject) {
+        if(SharedVars.hasIP){
+            controlServo(-1, right: -1, lastingTime: Int(self.slider.value))
+            
+            
+        }else{
+            self.statusTextField.text = "No IP retrieved"
+        }
+    }
 
 }
 

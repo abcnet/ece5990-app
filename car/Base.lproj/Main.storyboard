@@ -85,26 +85,35 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MMH-Sj-oAb">
+                                <rect key="frame" x="108" y="163" width="56" height="30"/>
+                                <state key="normal" title="Forward"/>
+                                <connections>
+                                    <action selector="forwardButtonClicked:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="Be6-X7-v4n"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mz6-cj-nho">
+                                <rect key="frame" x="189" y="214" width="30" height="30"/>
+                                <state key="normal" title="CW"/>
+                                <connections>
+                                    <action selector="cwButtonClicked:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="BUc-TR-veh"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oLi-eW-njp">
+                                <rect key="frame" x="55" y="214" width="36" height="30"/>
+                                <state key="normal" title="CCW"/>
+                                <connections>
+                                    <action selector="ccwButtonClicked:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="Qg7-O9-dRr"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UGB-7L-LcQ">
                                 <rect key="frame" x="102" y="264" width="68" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="68" id="Ayl-DY-hCe"/>
                                 </constraints>
                                 <state key="normal" title="Backward"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mz6-cj-nho">
-                                <rect key="frame" x="189" y="214" width="30" height="30"/>
-                                <state key="normal" title="CW"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oLi-eW-njp">
-                                <rect key="frame" x="55" y="214" width="36" height="30"/>
-                                <state key="normal" title="CCW"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MMH-Sj-oAb">
-                                <rect key="frame" x="108" y="163" width="56" height="30"/>
-                                <state key="normal" title="Forward"/>
                                 <connections>
-                                    <action selector="forwardButtonClicked:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="Be6-X7-v4n"/>
+                                    <action selector="backwardButtonClicked:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="SFh-yl-xCn"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -131,6 +140,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" systemItem="favorites" id="cPa-gy-q4n"/>
                     <connections>
+                        <outlet property="backwardButton" destination="UGB-7L-LcQ" id="DJx-TK-RSl"/>
                         <outlet property="ccwButton" destination="oLi-eW-njp" id="Sml-2F-dUt"/>
                         <outlet property="cwButton" destination="Mz6-cj-nho" id="ADA-oe-piT"/>
                         <outlet property="forwardButton" destination="MMH-Sj-oAb" id="kuU-sx-ZBE"/>
