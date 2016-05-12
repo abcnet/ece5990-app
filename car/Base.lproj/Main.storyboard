@@ -67,12 +67,32 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="5" minValue="1" maxValue="61" translatesAutoresizingMaskIntoConstraints="NO" id="aAL-O9-kbP">
+                                <rect key="frame" x="126" y="103" width="456" height="31"/>
+                                <connections>
+                                    <action selector="sliderChanged:" destination="8rJ-Kc-sve" eventType="valueChanged" id="6jG-jg-Ewu"/>
+                                </connections>
+                            </slider>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5 seconds" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AZ3-dn-imh">
+                                <rect key="frame" x="20" y="107" width="100" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="6LA-8I-aVs"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="aAL-O9-kbP" firstAttribute="top" secondItem="NDk-cv-Gan" secondAttribute="bottom" constant="8" id="9nP-71-t3b"/>
                             <constraint firstItem="zEq-FU-wV5" firstAttribute="top" secondItem="L7p-HK-0SC" secondAttribute="bottom" constant="8" id="A0Q-h2-6OD"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="aAL-O9-kbP" secondAttribute="trailing" id="B8b-PV-9Dx"/>
                             <constraint firstItem="NDk-cv-Gan" firstAttribute="top" secondItem="zEq-FU-wV5" secondAttribute="bottom" constant="8" symbolic="YES" id="Day-4N-Vmt"/>
                             <constraint firstItem="NDk-cv-Gan" firstAttribute="centerX" secondItem="zEq-FU-wV5" secondAttribute="centerX" id="JgO-Fn-dHn"/>
+                            <constraint firstItem="aAL-O9-kbP" firstAttribute="leading" secondItem="AZ3-dn-imh" secondAttribute="trailing" constant="8" id="Mik-31-R8c"/>
+                            <constraint firstItem="AZ3-dn-imh" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leadingMargin" id="PMM-Tm-suN"/>
+                            <constraint firstItem="AZ3-dn-imh" firstAttribute="top" secondItem="NDk-cv-Gan" secondAttribute="bottom" constant="12" id="kmH-mb-t67"/>
                             <constraint firstAttribute="centerX" secondItem="zEq-FU-wV5" secondAttribute="centerX" id="qqM-NS-xev"/>
                         </constraints>
                     </view>
@@ -80,6 +100,8 @@
                     <connections>
                         <outlet property="secondViewSubtitle" destination="NDk-cv-Gan" id="tbV-Ik-X2f"/>
                         <outlet property="secondViewText" destination="zEq-FU-wV5" id="qd7-ec-uz5"/>
+                        <outlet property="slider" destination="aAL-O9-kbP" id="RSZ-oX-tsy"/>
+                        <outlet property="sliderLabel" destination="AZ3-dn-imh" id="LpW-nM-2sE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>

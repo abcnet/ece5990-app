@@ -14,6 +14,8 @@ class SecondViewController: UIViewController {
     // Create a reference to a Firebase location
     var myRootRef = Firebase(url:"https://ece5990.firebaseio.com/ip")
     // Write data to Firebase
+    @IBOutlet weak var slider: UISlider!
+    @IBOutlet weak var sliderLabel: UILabel!
    
 
     @IBOutlet weak var secondViewText: UILabel!
@@ -137,6 +139,15 @@ class SecondViewController: UIViewController {
         }
 
     }
+    
+    @IBAction func sliderChanged(sender: AnyObject) {
+        if(slider.value > 60.5){
+        sliderLabel.text = "Infinity"
+        }else{
+            sliderLabel.text = String(Int(slider.value)) + " seconds"
+        }
+    }
+    
 
 
 }
