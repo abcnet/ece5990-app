@@ -27,6 +27,9 @@ class SecondViewController: UIViewController {
     @IBOutlet weak var backwardButton: UIButton!
     
     @IBOutlet weak var connectButton: UIButton!
+    
+    @IBOutlet weak var stopButton: UIButton!
+    
     var stringBuffer = ""
     
     override func viewDidLoad() {
@@ -256,6 +259,18 @@ class SecondViewController: UIViewController {
 //        self.statusTextField.text = errmsg
         SharedVars.tryConnect(self.ipTextFiled, statusLabel:self.statusTextField, button1: self.forwardButton, button2: self.ccwButton, button3: self.cwButton, button4: self.backwardButton)
     }
+    
+    @IBAction func stopButtonClicked(sender: AnyObject) {
+        if(SharedVars.hasIP){
+            controlServo(0, right: 0, lastingTime: 0)
+            
+            
+        }else{
+            self.statusTextField.text = "No IP retrieved"
+        }
+
+    }
+    
 
 }
 

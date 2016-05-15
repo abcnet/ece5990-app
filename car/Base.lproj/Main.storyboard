@@ -99,13 +99,6 @@
                                     <action selector="cwButtonClicked:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="BUc-TR-veh"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oLi-eW-njp">
-                                <rect key="frame" x="55" y="214" width="36" height="30"/>
-                                <state key="normal" title="CCW"/>
-                                <connections>
-                                    <action selector="ccwButtonClicked:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="Qg7-O9-dRr"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UGB-7L-LcQ">
                                 <rect key="frame" x="102" y="264" width="68" height="30"/>
                                 <constraints>
@@ -121,6 +114,20 @@
                                 <state key="normal" title="Connect"/>
                                 <connections>
                                     <action selector="connectButtonClicked:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="2Un-kD-dtT"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oLi-eW-njp">
+                                <rect key="frame" x="55" y="214" width="36" height="30"/>
+                                <state key="normal" title="CCW"/>
+                                <connections>
+                                    <action selector="ccwButtonClicked:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="Qg7-O9-dRr"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="seB-W1-alY">
+                                <rect key="frame" x="120" y="214" width="32" height="30"/>
+                                <state key="normal" title="Stop"/>
+                                <connections>
+                                    <action selector="stopButtonClicked:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="sww-B6-zZ5"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -141,7 +148,9 @@
                             <constraint firstItem="AZ3-dn-imh" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leadingMargin" id="PMM-Tm-suN"/>
                             <constraint firstItem="oLi-eW-njp" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leadingMargin" constant="35" id="UN0-Rk-XbX"/>
                             <constraint firstItem="Mz6-cj-nho" firstAttribute="leading" secondItem="oLi-eW-njp" secondAttribute="trailing" constant="98" id="Wjr-XX-FQM"/>
+                            <constraint firstItem="seB-W1-alY" firstAttribute="centerX" secondItem="MMH-Sj-oAb" secondAttribute="centerX" id="Zvp-lz-LLM"/>
                             <constraint firstItem="oLi-eW-njp" firstAttribute="top" secondItem="MMH-Sj-oAb" secondAttribute="bottom" constant="21" id="fHh-7F-REq"/>
+                            <constraint firstItem="seB-W1-alY" firstAttribute="centerY" secondItem="oLi-eW-njp" secondAttribute="centerY" id="hgD-dQ-coT"/>
                             <constraint firstItem="AZ3-dn-imh" firstAttribute="top" secondItem="NDk-cv-Gan" secondAttribute="bottom" constant="12" id="kmH-mb-t67"/>
                             <constraint firstItem="MMH-Sj-oAb" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leadingMargin" constant="88" id="qHY-eJ-uRG"/>
                             <constraint firstAttribute="centerX" secondItem="zEq-FU-wV5" secondAttribute="centerX" id="qqM-NS-xev"/>
@@ -158,6 +167,7 @@
                         <outlet property="slider" destination="aAL-O9-kbP" id="RSZ-oX-tsy"/>
                         <outlet property="sliderLabel" destination="AZ3-dn-imh" id="LpW-nM-2sE"/>
                         <outlet property="statusTextField" destination="NDk-cv-Gan" id="tYv-Cc-ply"/>
+                        <outlet property="stopButton" destination="seB-W1-alY" id="oDC-hB-Xzg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
