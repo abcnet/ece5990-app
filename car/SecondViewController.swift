@@ -8,7 +8,7 @@
 
 import UIKit
 import Firebase
-import SocketIOClientSwift
+//import SocketIOClientSwift
 class SecondViewController: UIViewController {
     
     // Create a reference to a Firebase location
@@ -26,6 +26,7 @@ class SecondViewController: UIViewController {
    
     @IBOutlet weak var backwardButton: UIButton!
     
+    @IBOutlet weak var connectButton: UIButton!
     var stringBuffer = ""
     
     override func viewDidLoad() {
@@ -46,7 +47,7 @@ class SecondViewController: UIViewController {
                 let ipsubstr = str.substringFromIndex(ipStart!)
                 let timesubstr = str.substringFromIndex(timeStart!)
                 let ip = ipsubstr.substringToIndex((ipsubstr.rangeOfString("\"")?.startIndex)!)
-                SharedVars.assignIP(self.ipTextFiled, ip: ip)
+                SharedVars.assignIP(self.ipTextFiled, statusLabel: self.statusTextField, ip: ip, button1: self.forwardButton, button2: self.ccwButton, button3: self.cwButton, button4: self.backwardButton)
 //                SharedVars.hasIP = true
                 let timeStr = timesubstr.substringToIndex((timesubstr.rangeOfString("\"")?.startIndex)!)
 //                self.secondViewText.text = ip
@@ -144,57 +145,35 @@ class SecondViewController: UIViewController {
             sliderLabel.text = String(Int(slider.value)) + " seconds"
         
     }
-    func readUntilEndOfLine(client: TCPClient) -> String{
-        self.stringBuffer = ""
-        var attempts = 20
-        while(attempts > 0){
-            attempts -= 1
-            let rawData = client.read(1024*10)
-            if (rawData  != nil){
-                let data = NSData(bytes: rawData!, length: rawData!.count)
-                
-                
-                
-                if let str = String(data: data, encoding: NSUTF8StringEncoding) {
-                    self.stringBuffer += str
-//                    print(str)
-                    if(self.stringBuffer.containsString("\r\n")){
-//                        print(str)
-                        
-                        let range = self.stringBuffer.rangeOfString("\r\n")
-                        let response = self.stringBuffer.substringToIndex((range?.startIndex)!)
-                        self.stringBuffer = self.stringBuffer.substringFromIndex((range?.endIndex)!)
-                        return response
-                    }
-                } else {
-                    print("not a valid UTF-8 sequence")
-                }
-            }else{
-                print("raw data is nil")
-            }
-
-        }
-        print("failed to read after 20 attemps, current buffer is " + self.stringBuffer)
-        return ""
-        
-    }
+    
     func controlServo(left: Int, right: Int, lastingTime: Int) -> Bool{
-        
+        var status = ""
         var attempts = 1
         var ok = false
         while(!ok && attempts > 0){
             attempts -= 1
-            self.statusTextField.text = ("Trying to connect to " + SharedVars.ip)
-            let client:TCPClient = TCPClient(addr: SharedVars.ip, port: 8765)
-            var (success, errmsg) = client.connect(timeout: 1)
+//            status =
+//            self.statusTextField.text = ("Trying to connect to " + SharedVars.ip)
+//            let client:TCPClient = TCPClient(addr: SharedVars.ip, port: 8765)
+            let client = SharedVars.client
+//            var (success, errmsg) = client.connect(timeout: 1)
+            var success = SharedVars.connected
+            var errmsg = ""
             if(success){
-                readUntilEndOfLine(client)
+//                readUntilEndOfLine(client)
+                print("Sending command")
                 (success, errmsg) = client.send(str: String(left) + " " + String(right) + " " + String(lastingTime) + "\r\n")
-                
+                if(!success){
+                    SharedVars.connected = false
+                    forwardButton.enabled = false
+                    ccwButton.enabled = false
+                    cwButton.enabled = false
+                    backwardButton.enabled = false
+                }
                 if(success){
-                    
-                    let response = readUntilEndOfLine(client)
-                    (success, errmsg) = client.close()
+                    print("reading response")
+                    let response = SharedVars.readUntilEndOfLine()
+//                    (success, errmsg) = client.close()
                     if (response != ""){
                         ok = true
                         print(response)
@@ -210,6 +189,12 @@ class SecondViewController: UIViewController {
 
         }
 //        self.statusTextField.text = "Failed to send command"
+        SharedVars.connected = false
+        forwardButton.enabled = false
+        ccwButton.enabled = false
+        cwButton.enabled = false
+        backwardButton.enabled = false
+
         return false
         
         
@@ -256,6 +241,20 @@ class SecondViewController: UIViewController {
         }else{
             self.statusTextField.text = "No IP retrieved"
         }
+    }
+    @IBAction func connectButtonClicked(sender: AnyObject) {
+//        let (success, errmsg) = SharedVars.client.connect(timeout: 1)
+//        if(success){
+//            SharedVars.connected = true
+//            SharedVars.readUntilEndOfLine()
+//            forwardButton.enabled = true
+//            ccwButton.enabled = true
+//            cwButton.enabled = true
+//            backwardButton.enabled = true
+//
+//        }
+//        self.statusTextField.text = errmsg
+        SharedVars.tryConnect(self.ipTextFiled, statusLabel:self.statusTextField, button1: self.forwardButton, button2: self.ccwButton, button3: self.cwButton, button4: self.backwardButton)
     }
 
 }

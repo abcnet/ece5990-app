@@ -92,11 +92,11 @@
 				3B65F5231CBE1077002CD392 /* AppDelegate.swift */,
 				3B65F5251CBE1077002CD392 /* FirstViewController.swift */,
 				3B65F5271CBE1077002CD392 /* SecondViewController.swift */,
+				3B3FD7F91CDDA05C000A90A1 /* SharedVars.swift */,
 				3B65F5291CBE1077002CD392 /* Main.storyboard */,
 				3B65F52C1CBE1077002CD392 /* Assets.xcassets */,
 				3B65F52E1CBE1077002CD392 /* LaunchScreen.storyboard */,
 				3B65F5311CBE1077002CD392 /* Info.plist */,
-				3B3FD7F91CDDA05C000A90A1 /* SharedVars.swift */,
 				3B37CF791CE2B858004E562E /* car-Bridging-Header.h */,
 			);
 			path = car;

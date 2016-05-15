@@ -116,13 +116,22 @@
                                     <action selector="backwardButtonClicked:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="SFh-yl-xCn"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nUW-dW-r0R">
+                                <rect key="frame" x="271" y="163" width="59" height="30"/>
+                                <state key="normal" title="Connect"/>
+                                <connections>
+                                    <action selector="connectButtonClicked:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="2Un-kD-dtT"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="nUW-dW-r0R" firstAttribute="top" secondItem="aAL-O9-kbP" secondAttribute="bottom" constant="30" id="4i8-N6-yF6"/>
                             <constraint firstItem="aAL-O9-kbP" firstAttribute="top" secondItem="NDk-cv-Gan" secondAttribute="bottom" constant="8" id="9nP-71-t3b"/>
                             <constraint firstItem="zEq-FU-wV5" firstAttribute="top" secondItem="L7p-HK-0SC" secondAttribute="bottom" constant="8" id="A0Q-h2-6OD"/>
                             <constraint firstAttribute="trailingMargin" secondItem="aAL-O9-kbP" secondAttribute="trailing" id="B8b-PV-9Dx"/>
                             <constraint firstItem="NDk-cv-Gan" firstAttribute="top" secondItem="zEq-FU-wV5" secondAttribute="bottom" constant="8" symbolic="YES" id="Day-4N-Vmt"/>
+                            <constraint firstItem="nUW-dW-r0R" firstAttribute="centerX" secondItem="QS5-Rx-YEW" secondAttribute="centerX" id="Dza-vS-Ycp"/>
                             <constraint firstItem="Mz6-cj-nho" firstAttribute="top" secondItem="MMH-Sj-oAb" secondAttribute="bottom" constant="21" id="FNV-kH-EKj"/>
                             <constraint firstItem="NDk-cv-Gan" firstAttribute="centerX" secondItem="zEq-FU-wV5" secondAttribute="centerX" id="JgO-Fn-dHn"/>
                             <constraint firstItem="UGB-7L-LcQ" firstAttribute="centerX" secondItem="MMH-Sj-oAb" secondAttribute="centerX" id="KKv-Us-Noi"/>
@@ -142,6 +151,7 @@
                     <connections>
                         <outlet property="backwardButton" destination="UGB-7L-LcQ" id="DJx-TK-RSl"/>
                         <outlet property="ccwButton" destination="oLi-eW-njp" id="Sml-2F-dUt"/>
+                        <outlet property="connectButton" destination="nUW-dW-r0R" id="ShP-N2-59t"/>
                         <outlet property="cwButton" destination="Mz6-cj-nho" id="ADA-oe-piT"/>
                         <outlet property="forwardButton" destination="MMH-Sj-oAb" id="kuU-sx-ZBE"/>
                         <outlet property="ipTextFiled" destination="zEq-FU-wV5" id="IQu-hi-0nE"/>
