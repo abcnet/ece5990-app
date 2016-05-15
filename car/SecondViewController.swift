@@ -140,11 +140,9 @@ class SecondViewController: UIViewController {
     
     
     @IBAction func sliderChanged(sender: AnyObject) {
-        if(slider.value > 60.5){
-        sliderLabel.text = "Infinity"
-        }else{
+        
             sliderLabel.text = String(Int(slider.value)) + " seconds"
-        }
+        
     }
     func readUntilEndOfLine(client: TCPClient) -> String{
         self.stringBuffer = ""
@@ -182,13 +180,13 @@ class SecondViewController: UIViewController {
     }
     func controlServo(left: Int, right: Int, lastingTime: Int) -> Bool{
         
-        var attempts = 10
+        var attempts = 1
         var ok = false
         while(!ok && attempts > 0){
             attempts -= 1
-            print("Attemping to connect to " + SharedVars.ip)
+            self.statusTextField.text = ("Trying to connect to " + SharedVars.ip)
             let client:TCPClient = TCPClient(addr: SharedVars.ip, port: 8765)
-            var (success, errmsg) = client.connect(timeout: 3)
+            var (success, errmsg) = client.connect(timeout: 1)
             if(success){
                 readUntilEndOfLine(client)
                 (success, errmsg) = client.send(str: String(left) + " " + String(right) + " " + String(lastingTime) + "\r\n")
@@ -204,14 +202,14 @@ class SecondViewController: UIViewController {
                         return true
                     }
                 }else{
-                    print("failed to send command. " + errmsg)
+                    self.statusTextField.text = ("failed to send command. " + errmsg)
                 }
             }else{
-                print("Failed to connect. " + errmsg)
+                self.statusTextField.text = ("Failed to connect. " + errmsg)
             }
 
         }
-        self.statusTextField.text = "Failed to send command after 10 attempts"
+//        self.statusTextField.text = "Failed to send command"
         return false
         
         
