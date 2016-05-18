@@ -228,7 +228,7 @@ class SecondViewController: UIViewController {
     
     @IBAction func ccwButtonClicked(sender: AnyObject) {
         if(SharedVars.hasIP){
-            controlServo(1, right: 1, lastingTime: Int(self.slider.value))
+            controlServo(-1, right: -1, lastingTime: Int(self.slider.value))
             
             
         }else{
@@ -238,7 +238,7 @@ class SecondViewController: UIViewController {
     
     @IBAction func cwButtonClicked(sender: AnyObject) {
         if(SharedVars.hasIP){
-            controlServo(-1, right: -1, lastingTime: Int(self.slider.value))
+            controlServo(1, right: 1, lastingTime: Int(self.slider.value))
             
             
         }else{
