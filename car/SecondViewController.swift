@@ -55,7 +55,7 @@ class SecondViewController: UIViewController {
                 let ipsubstr = str.substringFromIndex(ipStart!)
                 let timesubstr = str.substringFromIndex(timeStart!)
                 let ip = ipsubstr.substringToIndex((ipsubstr.rangeOfString("\"")?.startIndex)!)
-                SharedVars.assignIP(self.ipTextFiled, statusLabel: self.statusTextField, ip: ip, button1: self.forwardButton, button2: self.ccwButton, button3: self.cwButton, button4: self.backwardButton)
+                SharedVars.assignIP(self.ipTextFiled, statusLabel: self.statusTextField, ip: ip, button1: self.forwardButton, button2: self.ccwButton, button3: self.cwButton, button4: self.backwardButton, stopButton: self.stopButton, webView:self.webView)
 //                SharedVars.hasIP = true
                 let timeStr = timesubstr.substringToIndex((timesubstr.rangeOfString("\"")?.startIndex)!)
 //                self.secondViewText.text = ip
@@ -164,11 +164,11 @@ class SecondViewController: UIViewController {
     
     @IBAction func sliderChanged(sender: AnyObject) {
         
-            sliderLabel.text = String(Int(slider.value)) + " seconds"
+            sliderLabel.text = String(Double(Int(slider.value))/2.0) + " seconds"
         
     }
     
-    func controlServo(left: Int, right: Int, lastingTime: Int) -> Bool{
+    func controlServo(left: Int, right: Int, lastingTime: Double) -> Bool{
 //        var status = ""
         var attempts = 1
         var ok = false
@@ -227,7 +227,7 @@ class SecondViewController: UIViewController {
     
     @IBAction func forwardButtonClicked(sender: AnyObject) {
         if(SharedVars.hasIP){
-            controlServo(-1, right: 1, lastingTime: Int(self.slider.value))
+            controlServo(-1, right: 1, lastingTime: Double(Int(slider.value))/2.0)
             
             
         }else{
@@ -237,7 +237,7 @@ class SecondViewController: UIViewController {
 
     @IBAction func backwardButtonClicked(sender: AnyObject) {
         if(SharedVars.hasIP){
-            controlServo(1, right: -1, lastingTime: Int(self.slider.value))
+            controlServo(1, right: -1, lastingTime: Double(Int(slider.value))/2.0)
             
             
         }else{
@@ -247,7 +247,7 @@ class SecondViewController: UIViewController {
     
     @IBAction func ccwButtonClicked(sender: AnyObject) {
         if(SharedVars.hasIP){
-            controlServo(-1, right: -1, lastingTime: Int(self.slider.value))
+            controlServo(-1, right: -1, lastingTime: Double(Int(slider.value))/2.0)
             
             
         }else{
@@ -257,7 +257,7 @@ class SecondViewController: UIViewController {
     
     @IBAction func cwButtonClicked(sender: AnyObject) {
         if(SharedVars.hasIP){
-            controlServo(1, right: 1, lastingTime: Int(self.slider.value))
+            controlServo(1, right: 1, lastingTime: Double(Int(slider.value))/2.0)
             
             
         }else{
@@ -276,7 +276,7 @@ class SecondViewController: UIViewController {
 //
 //        }
 //        self.statusTextField.text = errmsg
-        SharedVars.tryConnect(self.ipTextFiled, statusLabel:self.statusTextField, button1: self.forwardButton, button2: self.ccwButton, button3: self.cwButton, button4: self.backwardButton)
+        SharedVars.tryConnect(self.ipTextFiled, statusLabel:self.statusTextField, button1: self.forwardButton, button2: self.ccwButton, button3: self.cwButton, button4: self.backwardButton, stopButton: self.stopButton, webView: self.webView)
     }
     
     @IBAction func stopButtonClicked(sender: AnyObject) {
@@ -315,13 +315,13 @@ class SecondViewController: UIViewController {
 //        self.presentViewController(playerViewController, animated: true) {
 //            playerViewController.player!.play()
 //        }
+        SharedVars.startCamera(self.webView)
         
-        if(SharedVars.hasIP && SharedVars.connected){
-            webView.loadRequest(NSURLRequest(URL: NSURL(string: "http://" + SharedVars.ip + ":8080/stream")!))
-        }
         
         
     }
+    
+    
 
 }
 
