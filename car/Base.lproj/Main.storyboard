@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -130,24 +130,41 @@
                                     <action selector="stopButtonClicked:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="sww-B6-zZ5"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ON5-Hx-9WF">
+                                <rect key="frame" x="273" y="264" width="54" height="30"/>
+                                <state key="normal" title="Camera"/>
+                                <connections>
+                                    <action selector="startCameraButtonClicked:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="a5z-9h-W7u"/>
+                                </connections>
+                            </button>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zLz-Fo-8y2">
+                                <rect key="frame" x="20" y="302" width="560" height="241"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
+                            </webView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="zLz-Fo-8y2" firstAttribute="trailing" secondItem="QS5-Rx-YEW" secondAttribute="trailingMargin" id="3BU-nb-z1K"/>
                             <constraint firstItem="nUW-dW-r0R" firstAttribute="top" secondItem="aAL-O9-kbP" secondAttribute="bottom" constant="30" id="4i8-N6-yF6"/>
                             <constraint firstItem="aAL-O9-kbP" firstAttribute="top" secondItem="NDk-cv-Gan" secondAttribute="bottom" constant="8" id="9nP-71-t3b"/>
                             <constraint firstItem="zEq-FU-wV5" firstAttribute="top" secondItem="L7p-HK-0SC" secondAttribute="bottom" constant="8" id="A0Q-h2-6OD"/>
                             <constraint firstAttribute="trailingMargin" secondItem="aAL-O9-kbP" secondAttribute="trailing" id="B8b-PV-9Dx"/>
                             <constraint firstItem="NDk-cv-Gan" firstAttribute="top" secondItem="zEq-FU-wV5" secondAttribute="bottom" constant="8" symbolic="YES" id="Day-4N-Vmt"/>
+                            <constraint firstItem="ON5-Hx-9WF" firstAttribute="centerX" secondItem="QS5-Rx-YEW" secondAttribute="centerX" id="DlW-QS-gXr"/>
                             <constraint firstItem="nUW-dW-r0R" firstAttribute="centerX" secondItem="QS5-Rx-YEW" secondAttribute="centerX" id="Dza-vS-Ycp"/>
                             <constraint firstItem="Mz6-cj-nho" firstAttribute="top" secondItem="MMH-Sj-oAb" secondAttribute="bottom" constant="21" id="FNV-kH-EKj"/>
                             <constraint firstItem="NDk-cv-Gan" firstAttribute="centerX" secondItem="zEq-FU-wV5" secondAttribute="centerX" id="JgO-Fn-dHn"/>
                             <constraint firstItem="UGB-7L-LcQ" firstAttribute="centerX" secondItem="MMH-Sj-oAb" secondAttribute="centerX" id="KKv-Us-Noi"/>
                             <constraint firstItem="UGB-7L-LcQ" firstAttribute="top" secondItem="oLi-eW-njp" secondAttribute="bottom" constant="20" id="L8c-VN-qao"/>
                             <constraint firstItem="aAL-O9-kbP" firstAttribute="leading" secondItem="AZ3-dn-imh" secondAttribute="trailing" constant="8" id="Mik-31-R8c"/>
+                            <constraint firstItem="ON5-Hx-9WF" firstAttribute="centerY" secondItem="UGB-7L-LcQ" secondAttribute="centerY" id="Mod-C8-QXy"/>
                             <constraint firstItem="MMH-Sj-oAb" firstAttribute="top" secondItem="aAL-O9-kbP" secondAttribute="bottom" constant="30" id="OWl-L8-FFt"/>
                             <constraint firstItem="AZ3-dn-imh" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leadingMargin" id="PMM-Tm-suN"/>
+                            <constraint firstItem="zLz-Fo-8y2" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leadingMargin" id="SCc-mc-MBG"/>
                             <constraint firstItem="oLi-eW-njp" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leadingMargin" constant="35" id="UN0-Rk-XbX"/>
+                            <constraint firstItem="zLz-Fo-8y2" firstAttribute="top" secondItem="ON5-Hx-9WF" secondAttribute="bottom" constant="8" id="Vhl-C3-sfU"/>
                             <constraint firstItem="Mz6-cj-nho" firstAttribute="leading" secondItem="oLi-eW-njp" secondAttribute="trailing" constant="98" id="Wjr-XX-FQM"/>
+                            <constraint firstItem="Djb-ko-YwX" firstAttribute="top" secondItem="zLz-Fo-8y2" secondAttribute="bottom" constant="8" id="Zaq-zr-YtD"/>
                             <constraint firstItem="seB-W1-alY" firstAttribute="centerX" secondItem="MMH-Sj-oAb" secondAttribute="centerX" id="Zvp-lz-LLM"/>
                             <constraint firstItem="oLi-eW-njp" firstAttribute="top" secondItem="MMH-Sj-oAb" secondAttribute="bottom" constant="21" id="fHh-7F-REq"/>
                             <constraint firstItem="seB-W1-alY" firstAttribute="centerY" secondItem="oLi-eW-njp" secondAttribute="centerY" id="hgD-dQ-coT"/>
@@ -166,8 +183,10 @@
                         <outlet property="ipTextFiled" destination="zEq-FU-wV5" id="IQu-hi-0nE"/>
                         <outlet property="slider" destination="aAL-O9-kbP" id="RSZ-oX-tsy"/>
                         <outlet property="sliderLabel" destination="AZ3-dn-imh" id="LpW-nM-2sE"/>
+                        <outlet property="startCameraButton" destination="ON5-Hx-9WF" id="qIi-hK-nMP"/>
                         <outlet property="statusTextField" destination="NDk-cv-Gan" id="tYv-Cc-ply"/>
                         <outlet property="stopButton" destination="seB-W1-alY" id="oDC-hB-Xzg"/>
+                        <outlet property="webView" destination="zLz-Fo-8y2" id="cBS-7U-FVD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>

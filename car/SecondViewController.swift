@@ -8,6 +8,9 @@
 
 import UIKit
 import Firebase
+import AVFoundation
+import AVKit
+//import MediaPlayer
 //import SocketIOClientSwift
 class SecondViewController: UIViewController {
     
@@ -29,9 +32,11 @@ class SecondViewController: UIViewController {
     @IBOutlet weak var connectButton: UIButton!
     
     @IBOutlet weak var stopButton: UIButton!
+    @IBOutlet weak var startCameraButton: UIButton!
+    @IBOutlet weak var webView: UIWebView!
     
     var stringBuffer = ""
-    
+//    var moviePlayerController : MPMoviePlayerController
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -135,6 +140,20 @@ class SecondViewController: UIViewController {
         
 
     }
+    
+//     func aviewDidAppear(animated: Bool) {
+////        super.viewDidAppear(animated)
+////        var filepath: String = NSBundle.mainBundle().pathForResource("vid", ofType: "mp4")
+//        var fileURL: NSURL = NSURL.fileURLWithPath("10.148.1.155:8767")
+//        self.moviePlayerController = MPMoviePlayerController(contentURL: fileURL)
+//        NSNotificationCenter.defaultCenter().addObserver(self, selector: "introMovieFinished:", name: MPMoviePlayerPlaybackDidFinishNotification, object: self.moviePlayerController)
+//        // Hide the video controls from the user
+//        self.moviePlayerController.controlStyle = .None
+//        self.moviePlayerController.prepareToPlay()
+//        self.moviePlayerController.view!.frame = CGRectMake(0, 0, 640 , 480)
+//        self.view!.addSubview(self.moviePlayerController.view!)
+//        self.moviePlayerController.play()
+//    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -150,7 +169,7 @@ class SecondViewController: UIViewController {
     }
     
     func controlServo(left: Int, right: Int, lastingTime: Int) -> Bool{
-        var status = ""
+//        var status = ""
         var attempts = 1
         var ok = false
         while(!ok && attempts > 0){
@@ -271,6 +290,38 @@ class SecondViewController: UIViewController {
 
     }
     
+   
+    @IBAction func startCameraButtonClicked(sender: AnyObject) {
+        //code from http://stackoverflow.com/questions/25932570/how-to-play-video-with-avplayerviewcontroller-avkit-in-swift
+//        var player:AVPlayer!
+        
+//        let steamingURL:NSURL = NSURL(string: "http://p.events-delivery.apple.com.edgesuite.net/1603kjbnadcpjhbasdvpjbasdvpjb/vod2/16ouhbadvouhbasdv03c.mp4")!
+//        let player = AVPlayer(URL: steamingURL)
+//        let avPlayerLayer:AVPlayerLayer = AVPlayerLayer(player: player)
+////        avPlayerLayer.frame = self.view.bounds
+//        avPlayerLayer.frame = CGRectMake(0, 400, 320, 240)
+//        avPlayerLayer.hidden = false
+//        self.view.layer.addSublayer(avPlayerLayer)
+//        
+//        player.play()
+        
+        
+        
+//        let videoURL = NSURL(string: "data://" + SharedVars.ip + ":8767")
+//        let videoURL = NSURL(string: "http://p.events-delivery.apple.com.edgesuite.net/1603kjbnadcpjhbasdvpjbasdvpjb/vod2/16ouhbadvouhbasdv03c.mp4")
+//        let player = AVPlayer(URL: videoURL!)
+//        let playerViewController = AVPlayerViewController()
+//        playerViewController.player = player
+//        self.presentViewController(playerViewController, animated: true) {
+//            playerViewController.player!.play()
+//        }
+        
+        if(SharedVars.hasIP && SharedVars.connected){
+            webView.loadRequest(NSURLRequest(URL: NSURL(string: "http://" + SharedVars.ip + ":8080/stream")!))
+        }
+        
+        
+    }
 
 }
 
