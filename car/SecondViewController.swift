@@ -205,7 +205,7 @@ class SecondViewController: UIViewController {
     
     @IBAction func forwardButtonClicked(sender: AnyObject) {
         if(SharedVars.hasIP && SharedVars.connected){
-            controlServo(-1, right: 1, lastingTime: Double(Int(slider.value))/2.0)
+            controlServo(1, right: -1, lastingTime: Double(Int(slider.value))/2.0)
             
             
         }else{
@@ -215,7 +215,7 @@ class SecondViewController: UIViewController {
 
     @IBAction func backwardButtonClicked(sender: AnyObject) {
         if(SharedVars.hasIP && SharedVars.connected){
-            controlServo(1, right: -1, lastingTime: Double(Int(slider.value))/2.0)
+            controlServo(-1, right: 1, lastingTime: Double(Int(slider.value))/2.0)
             
             
         }else{
