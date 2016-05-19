@@ -46,6 +46,9 @@ class SecondViewController: UIViewController {
         self.ccwButton.enabled = false
         self.cwButton.enabled = false
         self.stopButton.enabled = false
+        self.webView.scrollView.scrollEnabled = false
+        self.webView.scrollView.bounces = false
+        self.webView.userInteractionEnabled = false
         
         // Do any additional setup after loading the view, typically from a nib.
         // Create a reference to a Firebase location
