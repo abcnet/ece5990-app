@@ -106,9 +106,9 @@ class SecondViewController: UIViewController {
         // code from http://stackoverflow.com/questions/24007518/how-can-i-use-nstimer-in-swift
         // Something cool
         count += 1
-        self.myLabel.text = String(count)
+//        self.myLabel.text = String(count)
         if(SharedVars.hasIP && SharedVars.connected){
-            sendServoCommand("c\r\n")
+            sendServoCommand("c\r\n", label: self.myLabel)
             
             
         }else{
@@ -131,7 +131,7 @@ class SecondViewController: UIViewController {
         
     }
     
-    func sendServoCommand(s: String) -> Bool{
+    func sendServoCommand(s: String, label:UILabel) -> Bool{
         //        var status = ""
         var attempts = 1
         var ok = false
@@ -162,14 +162,14 @@ class SecondViewController: UIViewController {
                     if (response != ""){
                         ok = true
                         print(response)
-                        self.statusTextField.text = response
+                        label.text = response
                         return true
                     }
                 }else{
-                    self.statusTextField.text = ("failed to send command. " + errmsg)
+                    label.text = ("failed to send command. " + errmsg)
                 }
             }else{
-                self.statusTextField.text = ("Failed to connect. " + errmsg)
+                label.text = ("Failed to connect. " + errmsg)
             }
             
         }
@@ -186,7 +186,7 @@ class SecondViewController: UIViewController {
     }
     
     func controlServo(left: Int, right: Int, lastingTime: Double) -> Bool{
-        return sendServoCommand(String(left) + " " + String(right) + " " + String(lastingTime) + "\r\n")
+        return sendServoCommand(String(left) + " " + String(right) + " " + String(lastingTime) + "\r\n", label: self.statusTextField)
         
         
         
