@@ -92,10 +92,13 @@ class SharedVars {
     }
     static func startCamera(webView:UIWebView){
         if(SharedVars.hasIP && SharedVars.connected){
+            
             webView.loadRequest(NSURLRequest(URL: NSURL(string: "http://" + SharedVars.ip + ":8080/stream")!))
         }
     }
-    static func stopCamera(webView:UIWebView){
-        webView.loadHTMLString("<body bgcolor=\"#000000\"> </body> ", baseURL: nil)
-    }
+//    static func stopCamera(webView:UIWebView){
+//        
+//        // code from 
+////        webView.
+//    }
 }
