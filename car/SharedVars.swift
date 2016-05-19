@@ -96,6 +96,6 @@ class SharedVars {
         }
     }
     static func stopCamera(webView:UIWebView){
-        
+        webView.loadHTMLString("<body bgcolor=\"#000000\"> </body> ", baseURL: nil)
     }
 }

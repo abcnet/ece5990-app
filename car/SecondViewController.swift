@@ -35,6 +35,7 @@ class SecondViewController: UIViewController {
     @IBOutlet weak var stopButton: UIButton!
     @IBOutlet weak var startCameraButton: UIButton!
     @IBOutlet weak var webView: UIWebView!
+    @IBOutlet weak var stopCameraButton: UIButton!
     
     var stringBuffer = ""
 //    var moviePlayerController : MPMoviePlayerController
@@ -220,6 +221,9 @@ class SecondViewController: UIViewController {
     }
     
     
+    @IBAction func stopCameraButtonClicked(sender: AnyObject) {
+        SharedVars.stopCamera(self.webView)
+    }
 
 }
 

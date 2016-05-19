@@ -107,12 +107,15 @@
                                 </connections>
                             </button>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zLz-Fo-8y2">
-                                <rect key="frame" x="20" y="343" width="560" height="208"/>
+                                <rect key="frame" x="20" y="343" width="560" height="198"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
                             </webView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gSi-NK-59u">
                                 <rect key="frame" x="494" y="303" width="86" height="30"/>
                                 <state key="normal" title="Camera OFF"/>
+                                <connections>
+                                    <action selector="stopCameraButtonClicked:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="gkS-Tx-G4C"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ON5-Hx-9WF">
                                 <rect key="frame" x="20" y="303" width="80" height="30"/>
@@ -150,7 +153,7 @@
                             <constraint firstItem="nUW-dW-r0R" firstAttribute="trailing" secondItem="QS5-Rx-YEW" secondAttribute="trailingMargin" id="hBG-fn-Hqm"/>
                             <constraint firstItem="seB-W1-alY" firstAttribute="centerY" secondItem="oLi-eW-njp" secondAttribute="centerY" id="hgD-dQ-coT"/>
                             <constraint firstItem="gSi-NK-59u" firstAttribute="centerY" secondItem="ON5-Hx-9WF" secondAttribute="centerY" id="kQn-eD-iQt"/>
-                            <constraint firstItem="Djb-ko-YwX" firstAttribute="top" secondItem="zLz-Fo-8y2" secondAttribute="bottom" id="kTH-Jd-1Fn"/>
+                            <constraint firstItem="Djb-ko-YwX" firstAttribute="top" secondItem="zLz-Fo-8y2" secondAttribute="bottom" constant="10" id="kTH-Jd-1Fn"/>
                             <constraint firstItem="AZ3-dn-imh" firstAttribute="top" secondItem="NDk-cv-Gan" secondAttribute="bottom" constant="12" id="kmH-mb-t67"/>
                             <constraint firstItem="zLz-Fo-8y2" firstAttribute="trailing" secondItem="QS5-Rx-YEW" secondAttribute="trailingMargin" id="kqQ-Z2-6YT"/>
                             <constraint firstItem="zLz-Fo-8y2" firstAttribute="top" secondItem="ON5-Hx-9WF" secondAttribute="bottom" constant="10" id="nU7-4k-QKr"/>
@@ -175,6 +178,7 @@
                         <outlet property="startCameraButton" destination="ON5-Hx-9WF" id="qIi-hK-nMP"/>
                         <outlet property="statusTextField" destination="NDk-cv-Gan" id="tYv-Cc-ply"/>
                         <outlet property="stopButton" destination="seB-W1-alY" id="oDC-hB-Xzg"/>
+                        <outlet property="stopCameraButton" destination="gSi-NK-59u" id="J3b-Nv-PNK"/>
                         <outlet property="webView" destination="zLz-Fo-8y2" id="cBS-7U-FVD"/>
                     </connections>
                 </viewController>
