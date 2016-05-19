@@ -39,8 +39,14 @@ class SecondViewController: UIViewController {
     @IBOutlet weak var webView2: UIWebView!
     @IBOutlet weak var stopCameraButton: UIButton!
     
+    
+    @IBOutlet weak var myLabel: UILabel!
+    
     var stringBuffer = ""
-//    var moviePlayerController : MPMoviePlayerController
+    var count = 0
+    
+    var timer       = NSTimer()
+    //    var moviePlayerController : MPMoviePlayerController
     override func viewDidLoad() {
         super.viewDidLoad()
         self.forwardButton.enabled = false
@@ -53,6 +59,8 @@ class SecondViewController: UIViewController {
         self.webView.userInteractionEnabled = false
         self.webView2.loadHTMLString("<html lang=\"en\"><head profile=\"http://www.w3.org/2006/03/hcard\"><title>Example of vertical centering</title><style type=\"text/css\">  body {background: #ffffff; color: #000000; font-size: large;    }  /* Vertical centering: make div as large as viewport and use table layout */  div.container {top: 0; left: 0; width: 100%; height: 100%;    position: absolute; display: table}  p {display: table-cell; vertical-align: middle}  /* Also center the lines in the paragraph */  p {text-align: center}  body, html {height: 100%; margin: 0; padding: 0}  </style> </head> <body>  <div class=\"container\">   <p style=\"font-size:30px\">Camera OFF  </p></div></body></html>", baseURL: nil)
         self.view.bringSubviewToFront(self.webView)
+        // code for timer from https://www.weheartswift.com/nstimer-in-swift/
+        timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: #selector(SecondViewController.update), userInfo: nil, repeats: true)
         // Do any additional setup after loading the view, typically from a nib.
         // Create a reference to a Firebase location
         // Read data and react to changes
@@ -90,6 +98,12 @@ class SecondViewController: UIViewController {
 
     }
     
+    func update() {
+        // code from http://stackoverflow.com/questions/24007518/how-can-i-use-nstimer-in-swift
+        // Something cool
+        count += 1
+        self.myLabel.text = String(count)
+    }
 
 
     override func didReceiveMemoryWarning() {

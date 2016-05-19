@@ -142,9 +142,16 @@
                                     <action selector="refreshCameraButtonClicked:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="WiL-Jd-oOp"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cLI-RQ-ADp">
+                                <rect key="frame" x="538" y="115" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="cLI-RQ-ADp" firstAttribute="trailing" secondItem="QS5-Rx-YEW" secondAttribute="trailingMargin" id="0uy-WJ-dof"/>
                             <constraint firstItem="aAL-O9-kbP" firstAttribute="top" secondItem="NDk-cv-Gan" secondAttribute="bottom" constant="8" id="9nP-71-t3b"/>
                             <constraint firstAttribute="trailingMargin" secondItem="aAL-O9-kbP" secondAttribute="trailing" id="B8b-PV-9Dx"/>
                             <constraint firstItem="bSt-k5-Xsy" firstAttribute="top" secondItem="ON5-Hx-9WF" secondAttribute="bottom" constant="10" id="BXA-e3-1Vs"/>
@@ -178,6 +185,7 @@
                             <constraint firstItem="zLz-Fo-8y2" firstAttribute="trailing" secondItem="QS5-Rx-YEW" secondAttribute="trailingMargin" id="kqQ-Z2-6YT"/>
                             <constraint firstItem="zLz-Fo-8y2" firstAttribute="top" secondItem="ON5-Hx-9WF" secondAttribute="bottom" constant="10" id="nU7-4k-QKr"/>
                             <constraint firstItem="ON5-Hx-9WF" firstAttribute="top" secondItem="UGB-7L-LcQ" secondAttribute="bottom" constant="17" id="nxF-aM-Z89"/>
+                            <constraint firstItem="cLI-RQ-ADp" firstAttribute="top" secondItem="aAL-O9-kbP" secondAttribute="bottom" constant="8" id="oTN-i5-60U"/>
                             <constraint firstAttribute="leadingMargin" secondItem="ON5-Hx-9WF" secondAttribute="leading" id="pif-pY-ijK"/>
                             <constraint firstItem="MMH-Sj-oAb" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leadingMargin" constant="60" id="qHY-eJ-uRG"/>
                             <constraint firstItem="zEq-FU-wV5" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leadingMargin" id="qK1-gC-Mbf"/>
@@ -200,6 +208,7 @@
                         <outlet property="cwButton" destination="Mz6-cj-nho" id="ADA-oe-piT"/>
                         <outlet property="forwardButton" destination="MMH-Sj-oAb" id="kuU-sx-ZBE"/>
                         <outlet property="ipTextFiled" destination="zEq-FU-wV5" id="IQu-hi-0nE"/>
+                        <outlet property="myLabel" destination="cLI-RQ-ADp" id="GWT-NP-5XE"/>
                         <outlet property="slider" destination="aAL-O9-kbP" id="RSZ-oX-tsy"/>
                         <outlet property="sliderLabel" destination="AZ3-dn-imh" id="LpW-nM-2sE"/>
                         <outlet property="startCameraButton" destination="ON5-Hx-9WF" id="qIi-hK-nMP"/>
