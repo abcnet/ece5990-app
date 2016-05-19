@@ -93,7 +93,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nUW-dW-r0R">
-                                <rect key="frame" x="521" y="20" width="59" height="30"/>
+                                <rect key="frame" x="521" y="50" width="59" height="30"/>
                                 <state key="normal" title="Connect"/>
                                 <connections>
                                     <action selector="connectButtonClicked:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="2Un-kD-dtT"/>
@@ -143,7 +143,11 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cLI-RQ-ADp">
-                                <rect key="frame" x="538" y="115" width="42" height="21"/>
+                                <rect key="frame" x="448" y="115" width="132" height="58"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="132" id="s5V-xg-KGS"/>
+                                    <constraint firstAttribute="height" constant="58" id="wBW-3i-SiV"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -156,7 +160,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="aAL-O9-kbP" secondAttribute="trailing" id="B8b-PV-9Dx"/>
                             <constraint firstItem="bSt-k5-Xsy" firstAttribute="top" secondItem="ON5-Hx-9WF" secondAttribute="bottom" constant="10" id="BXA-e3-1Vs"/>
                             <constraint firstItem="ON5-Hx-9WF" firstAttribute="top" secondItem="UGB-7L-LcQ" secondAttribute="bottom" constant="17" id="Czb-1w-HcW"/>
-                            <constraint firstItem="nUW-dW-r0R" firstAttribute="top" secondItem="L7p-HK-0SC" secondAttribute="bottom" id="D6a-7e-Vci"/>
+                            <constraint firstItem="nUW-dW-r0R" firstAttribute="top" secondItem="L7p-HK-0SC" secondAttribute="bottom" constant="30" id="D6a-7e-Vci"/>
                             <constraint firstItem="Mz6-cj-nho" firstAttribute="top" secondItem="MMH-Sj-oAb" secondAttribute="bottom" constant="21" id="FNV-kH-EKj"/>
                             <constraint firstAttribute="trailingMargin" secondItem="gSi-NK-59u" secondAttribute="trailing" id="FYI-1m-Sxh"/>
                             <constraint firstItem="bSt-k5-Xsy" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leadingMargin" id="IDb-mC-bOu"/>

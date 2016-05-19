@@ -57,13 +57,23 @@ class SecondViewController: UIViewController {
         self.webView.scrollView.scrollEnabled = false
         self.webView.scrollView.bounces = false
         self.webView.userInteractionEnabled = false
+        self.webView2.scrollView.scrollEnabled = false
+        self.webView2.scrollView.bounces = false
+        self.webView2.userInteractionEnabled = false
+        // from http://www.w3.org/ example
         self.webView2.loadHTMLString("<html lang=\"en\"><head profile=\"http://www.w3.org/2006/03/hcard\"><title>Example of vertical centering</title><style type=\"text/css\">  body {background: #ffffff; color: #000000; font-size: large;    }  /* Vertical centering: make div as large as viewport and use table layout */  div.container {top: 0; left: 0; width: 100%; height: 100%;    position: absolute; display: table}  p {display: table-cell; vertical-align: middle}  /* Also center the lines in the paragraph */  p {text-align: center}  body, html {height: 100%; margin: 0; padding: 0}  </style> </head> <body>  <div class=\"container\">   <p style=\"font-size:30px\">Camera OFF  </p></div></body></html>", baseURL: nil)
         self.view.bringSubviewToFront(self.webView)
         
         // code for timer from https://www.weheartswift.com/nstimer-in-swift/
         
         timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: #selector(SecondViewController.update), userInfo: nil, repeats: true)
-        
+        // from http://stackoverflow.com/questions/990221/multiple-lines-of-text-in-uilabel
+        self.myLabel.layer.borderColor = UIColor.blackColor().CGColor
+        self.myLabel.layer.borderWidth = 4
+//        self.myLabel.layer.cornerRadius = 3
+        myLabel.lineBreakMode = .ByWordWrapping
+        // from http://stackoverflow.com/questions/24034300/swift-uilabel-text-alignment
+        self.myLabel.textAlignment = NSTextAlignment.Center
         
         // Do any additional setup after loading the view, typically from a nib.
         // Create a reference to a Firebase location
@@ -112,7 +122,7 @@ class SecondViewController: UIViewController {
             
             
         }else{
-            self.statusTextField.text = "No IP retrieved"
+            self.myLabel.text = "Disconnected"
         }
 
     }
@@ -199,7 +209,7 @@ class SecondViewController: UIViewController {
             
             
         }else{
-            self.statusTextField.text = "No IP retrieved"
+            self.statusTextField.text = "Disconnected"
         }
     }
 
@@ -209,7 +219,7 @@ class SecondViewController: UIViewController {
             
             
         }else{
-            self.statusTextField.text = "No IP retrieved"
+            self.statusTextField.text = "Disconnected"
         }
     }
     
@@ -219,7 +229,7 @@ class SecondViewController: UIViewController {
             
             
         }else{
-            self.statusTextField.text = "No IP retrieved"
+            self.statusTextField.text = "Disconnected"
         }
     }
     
@@ -229,7 +239,7 @@ class SecondViewController: UIViewController {
             
             
         }else{
-            self.statusTextField.text = "No IP retrieved"
+            self.statusTextField.text = "Disconnected"
         }
     }
     @IBAction func connectButtonClicked(sender: AnyObject) {
@@ -243,7 +253,7 @@ class SecondViewController: UIViewController {
             
             
         }else{
-            self.statusTextField.text = "No IP retrieved"
+            self.statusTextField.text = "Disconnected"
         }
 
     }
