@@ -40,6 +40,12 @@ class SecondViewController: UIViewController {
 //    var moviePlayerController : MPMoviePlayerController
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.forwardButton.enabled = false
+        self.backwardButton.enabled = false
+        self.ccwButton.enabled = false
+        self.cwButton.enabled = false
+        self.stopButton.enabled = false
+        
         // Do any additional setup after loading the view, typically from a nib.
         // Create a reference to a Firebase location
         // Read data and react to changes
