@@ -39,6 +39,7 @@ class SecondViewController: UIViewController {
     @IBOutlet weak var webView2: UIWebView!
     @IBOutlet weak var stopCameraButton: UIButton!
     
+    @IBOutlet weak var imHomeButtom: UIButton!
     
     @IBOutlet weak var myLabel: UILabel!
     
@@ -72,6 +73,8 @@ class SecondViewController: UIViewController {
         self.myLabel.layer.borderWidth = 4
 //        self.myLabel.layer.cornerRadius = 3
         myLabel.lineBreakMode = .ByWordWrapping
+        myLabel.numberOfLines = 0
+        
         // from http://stackoverflow.com/questions/24034300/swift-uilabel-text-alignment
         self.myLabel.textAlignment = NSTextAlignment.Center
         
@@ -277,5 +280,18 @@ class SecondViewController: UIViewController {
     @IBAction func refreshCameraButtonClicked(sender: AnyObject) {
         SharedVars.startCamera(self.webView)
     }
+    
+    @IBAction func imHomeButtonClicked(sender: AnyObject) {
+        
+        if(SharedVars.hasIP && SharedVars.connected){
+            sendServoCommand("h\r\n", label: self.myLabel)
+            
+            
+        }else{
+            self.myLabel.text = "Disconnected"
+        }
+
+    }
+    
 }
 

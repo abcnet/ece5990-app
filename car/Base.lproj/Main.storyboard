@@ -143,19 +143,27 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cLI-RQ-ADp">
-                                <rect key="frame" x="448" y="115" width="132" height="58"/>
+                                <rect key="frame" x="430" y="115" width="150" height="90"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="132" id="s5V-xg-KGS"/>
-                                    <constraint firstAttribute="height" constant="58" id="wBW-3i-SiV"/>
+                                    <constraint firstAttribute="width" constant="150" id="s5V-xg-KGS"/>
+                                    <constraint firstAttribute="height" constant="90" id="wBW-3i-SiV"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KQK-Sx-VPh">
+                                <rect key="frame" x="473" y="213" width="65" height="30"/>
+                                <state key="normal" title="I'm Home"/>
+                                <connections>
+                                    <action selector="imHomeButtonClicked:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="bPf-Y7-CFR"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="cLI-RQ-ADp" firstAttribute="trailing" secondItem="QS5-Rx-YEW" secondAttribute="trailingMargin" id="0uy-WJ-dof"/>
+                            <constraint firstItem="KQK-Sx-VPh" firstAttribute="centerX" secondItem="cLI-RQ-ADp" secondAttribute="centerX" id="4Mi-cp-O7D"/>
                             <constraint firstItem="aAL-O9-kbP" firstAttribute="top" secondItem="NDk-cv-Gan" secondAttribute="bottom" constant="8" id="9nP-71-t3b"/>
                             <constraint firstAttribute="trailingMargin" secondItem="aAL-O9-kbP" secondAttribute="trailing" id="B8b-PV-9Dx"/>
                             <constraint firstItem="bSt-k5-Xsy" firstAttribute="top" secondItem="ON5-Hx-9WF" secondAttribute="bottom" constant="10" id="BXA-e3-1Vs"/>
@@ -169,6 +177,7 @@
                             <constraint firstItem="A18-bE-Ctu" firstAttribute="centerY" secondItem="QS5-Rx-YEW" secondAttribute="centerY" id="KnE-sW-idi"/>
                             <constraint firstItem="UGB-7L-LcQ" firstAttribute="top" secondItem="oLi-eW-njp" secondAttribute="bottom" constant="20" id="L8c-VN-qao"/>
                             <constraint firstItem="aAL-O9-kbP" firstAttribute="leading" secondItem="AZ3-dn-imh" secondAttribute="trailing" constant="8" id="Mik-31-R8c"/>
+                            <constraint firstItem="KQK-Sx-VPh" firstAttribute="top" secondItem="cLI-RQ-ADp" secondAttribute="bottom" constant="8" id="NRg-SP-9VR"/>
                             <constraint firstItem="zEq-FU-wV5" firstAttribute="top" secondItem="L7p-HK-0SC" secondAttribute="bottom" id="Ny8-bP-CLC"/>
                             <constraint firstItem="A18-bE-Ctu" firstAttribute="centerY" secondItem="QS5-Rx-YEW" secondAttribute="centerY" id="O1n-SD-EFb"/>
                             <constraint firstItem="MMH-Sj-oAb" firstAttribute="top" secondItem="aAL-O9-kbP" secondAttribute="bottom" constant="30" id="OWl-L8-FFt"/>
@@ -211,6 +220,7 @@
                         <outlet property="connectButton" destination="nUW-dW-r0R" id="ShP-N2-59t"/>
                         <outlet property="cwButton" destination="Mz6-cj-nho" id="ADA-oe-piT"/>
                         <outlet property="forwardButton" destination="MMH-Sj-oAb" id="kuU-sx-ZBE"/>
+                        <outlet property="imHomeButtom" destination="KQK-Sx-VPh" id="iDU-Li-0Bh"/>
                         <outlet property="ipTextFiled" destination="zEq-FU-wV5" id="IQu-hi-0nE"/>
                         <outlet property="myLabel" destination="cLI-RQ-ADp" id="GWT-NP-5XE"/>
                         <outlet property="slider" destination="aAL-O9-kbP" id="RSZ-oX-tsy"/>
