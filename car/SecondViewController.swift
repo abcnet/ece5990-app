@@ -59,8 +59,12 @@ class SecondViewController: UIViewController {
         self.webView.userInteractionEnabled = false
         self.webView2.loadHTMLString("<html lang=\"en\"><head profile=\"http://www.w3.org/2006/03/hcard\"><title>Example of vertical centering</title><style type=\"text/css\">  body {background: #ffffff; color: #000000; font-size: large;    }  /* Vertical centering: make div as large as viewport and use table layout */  div.container {top: 0; left: 0; width: 100%; height: 100%;    position: absolute; display: table}  p {display: table-cell; vertical-align: middle}  /* Also center the lines in the paragraph */  p {text-align: center}  body, html {height: 100%; margin: 0; padding: 0}  </style> </head> <body>  <div class=\"container\">   <p style=\"font-size:30px\">Camera OFF  </p></div></body></html>", baseURL: nil)
         self.view.bringSubviewToFront(self.webView)
+        
         // code for timer from https://www.weheartswift.com/nstimer-in-swift/
+        
         timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: #selector(SecondViewController.update), userInfo: nil, repeats: true)
+        
+        
         // Do any additional setup after loading the view, typically from a nib.
         // Create a reference to a Firebase location
         // Read data and react to changes
@@ -103,6 +107,14 @@ class SecondViewController: UIViewController {
         // Something cool
         count += 1
         self.myLabel.text = String(count)
+        if(SharedVars.hasIP && SharedVars.connected){
+            sendServoCommand("c\r\n")
+            
+            
+        }else{
+            self.statusTextField.text = "No IP retrieved"
+        }
+
     }
 
 
@@ -119,23 +131,23 @@ class SecondViewController: UIViewController {
         
     }
     
-    func controlServo(left: Int, right: Int, lastingTime: Double) -> Bool{
-//        var status = ""
+    func sendServoCommand(s: String) -> Bool{
+        //        var status = ""
         var attempts = 1
         var ok = false
         while(!ok && attempts > 0){
             attempts -= 1
-//            status =
-//            self.statusTextField.text = ("Trying to connect to " + SharedVars.ip)
-//            let client:TCPClient = TCPClient(addr: SharedVars.ip, port: 8765)
+            //            status =
+            //            self.statusTextField.text = ("Trying to connect to " + SharedVars.ip)
+            //            let client:TCPClient = TCPClient(addr: SharedVars.ip, port: 8765)
             let client = SharedVars.client
-//            var (success, errmsg) = client.connect(timeout: 1)
+            //            var (success, errmsg) = client.connect(timeout: 1)
             var success = SharedVars.connected
             var errmsg = ""
             if(success){
-//                readUntilEndOfLine(client)
+                //                readUntilEndOfLine(client)
                 print("Sending command")
-                (success, errmsg) = client.send(str: String(left) + " " + String(right) + " " + String(lastingTime) + "\r\n")
+                (success, errmsg) = client.send(str: s)
                 if(!success){
                     SharedVars.connected = false
                     forwardButton.enabled = false
@@ -146,7 +158,7 @@ class SecondViewController: UIViewController {
                 if(success){
                     print("reading response")
                     let response = SharedVars.readUntilEndOfLine()
-//                    (success, errmsg) = client.close()
+                    //                    (success, errmsg) = client.close()
                     if (response != ""){
                         ok = true
                         print(response)
@@ -159,25 +171,29 @@ class SecondViewController: UIViewController {
             }else{
                 self.statusTextField.text = ("Failed to connect. " + errmsg)
             }
-
+            
         }
-//        self.statusTextField.text = "Failed to send command"
+        //        self.statusTextField.text = "Failed to send command"
         SharedVars.connected = false
         forwardButton.enabled = false
         ccwButton.enabled = false
         cwButton.enabled = false
         backwardButton.enabled = false
-
+        
         return false
         
-        
+
+    }
+    
+    func controlServo(left: Int, right: Int, lastingTime: Double) -> Bool{
+        return sendServoCommand(String(left) + " " + String(right) + " " + String(lastingTime) + "\r\n")
         
         
         
     }
     
     @IBAction func forwardButtonClicked(sender: AnyObject) {
-        if(SharedVars.hasIP){
+        if(SharedVars.hasIP && SharedVars.connected){
             controlServo(-1, right: 1, lastingTime: Double(Int(slider.value))/2.0)
             
             
@@ -187,7 +203,7 @@ class SecondViewController: UIViewController {
     }
 
     @IBAction func backwardButtonClicked(sender: AnyObject) {
-        if(SharedVars.hasIP){
+        if(SharedVars.hasIP && SharedVars.connected){
             controlServo(1, right: -1, lastingTime: Double(Int(slider.value))/2.0)
             
             
@@ -197,7 +213,7 @@ class SecondViewController: UIViewController {
     }
     
     @IBAction func ccwButtonClicked(sender: AnyObject) {
-        if(SharedVars.hasIP){
+        if(SharedVars.hasIP && SharedVars.connected){
             controlServo(-1, right: -1, lastingTime: Double(Int(slider.value))/2.0)
             
             
@@ -207,7 +223,7 @@ class SecondViewController: UIViewController {
     }
     
     @IBAction func cwButtonClicked(sender: AnyObject) {
-        if(SharedVars.hasIP){
+        if(SharedVars.hasIP && SharedVars.connected){
             controlServo(1, right: 1, lastingTime: Double(Int(slider.value))/2.0)
             
             
@@ -221,7 +237,7 @@ class SecondViewController: UIViewController {
     }
     
     @IBAction func stopButtonClicked(sender: AnyObject) {
-        if(SharedVars.hasIP){
+        if(SharedVars.hasIP && SharedVars.connected){
             controlServo(0, right: 0, lastingTime: 0)
             
             

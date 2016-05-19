@@ -20,6 +20,7 @@ class SharedVars {
         label.text = ip
         hasIP = true
         client = TCPClient(addr: SharedVars.ip, port: 8765)
+        sleep(1)
         tryConnect(label, statusLabel: statusLabel, button1: button1, button2: button2, button3: button3, button4: button4, stopButton: stopButton, webView:webView)
 //                print(ip)
     }
