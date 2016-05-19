@@ -44,6 +44,15 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Retrieving timestamp..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NDk-cv-Gan">
+                                <rect key="frame" x="113" y="70" width="374" height="17"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="374" id="ege-g5-rHc"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="6" minValue="0.0" maxValue="20" translatesAutoresizingMaskIntoConstraints="NO" id="aAL-O9-kbP">
                                 <rect key="frame" x="136" y="95" width="446" height="31"/>
                                 <connections>
@@ -83,13 +92,6 @@
                                     <action selector="backwardButtonClicked:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="SFh-yl-xCn"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nUW-dW-r0R">
-                                <rect key="frame" x="271" y="155" width="59" height="30"/>
-                                <state key="normal" title="Connect"/>
-                                <connections>
-                                    <action selector="connectButtonClicked:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="2Un-kD-dtT"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oLi-eW-njp">
                                 <rect key="frame" x="55" y="206" width="36" height="30"/>
                                 <state key="normal" title="CCW"/>
@@ -115,15 +117,13 @@
                                 <rect key="frame" x="20" y="294" width="560" height="249"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
                             </webView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Retrieving timestamp..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NDk-cv-Gan">
-                                <rect key="frame" x="113" y="70" width="374" height="17"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="374" id="ege-g5-rHc"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nUW-dW-r0R">
+                                <rect key="frame" x="521" y="20" width="59" height="30"/>
+                                <state key="normal" title="Connect"/>
+                                <connections>
+                                    <action selector="connectButtonClicked:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="2Un-kD-dtT"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -131,6 +131,7 @@
                             <constraint firstItem="nUW-dW-r0R" firstAttribute="top" secondItem="aAL-O9-kbP" secondAttribute="bottom" constant="30" id="4i8-N6-yF6"/>
                             <constraint firstItem="aAL-O9-kbP" firstAttribute="top" secondItem="NDk-cv-Gan" secondAttribute="bottom" constant="8" id="9nP-71-t3b"/>
                             <constraint firstAttribute="trailingMargin" secondItem="aAL-O9-kbP" secondAttribute="trailing" id="B8b-PV-9Dx"/>
+                            <constraint firstItem="nUW-dW-r0R" firstAttribute="top" secondItem="L7p-HK-0SC" secondAttribute="bottom" id="D6a-7e-Vci"/>
                             <constraint firstItem="ON5-Hx-9WF" firstAttribute="centerX" secondItem="QS5-Rx-YEW" secondAttribute="centerX" id="DlW-QS-gXr"/>
                             <constraint firstItem="nUW-dW-r0R" firstAttribute="centerX" secondItem="QS5-Rx-YEW" secondAttribute="centerX" id="Dza-vS-Ycp"/>
                             <constraint firstItem="Mz6-cj-nho" firstAttribute="top" secondItem="MMH-Sj-oAb" secondAttribute="bottom" constant="21" id="FNV-kH-EKj"/>
@@ -149,12 +150,19 @@
                             <constraint firstItem="Djb-ko-YwX" firstAttribute="top" secondItem="zLz-Fo-8y2" secondAttribute="bottom" constant="8" id="Zaq-zr-YtD"/>
                             <constraint firstItem="seB-W1-alY" firstAttribute="centerX" secondItem="MMH-Sj-oAb" secondAttribute="centerX" id="Zvp-lz-LLM"/>
                             <constraint firstItem="oLi-eW-njp" firstAttribute="top" secondItem="MMH-Sj-oAb" secondAttribute="bottom" constant="21" id="fHh-7F-REq"/>
+                            <constraint firstItem="nUW-dW-r0R" firstAttribute="trailing" secondItem="QS5-Rx-YEW" secondAttribute="trailingMargin" id="hBG-fn-Hqm"/>
                             <constraint firstItem="seB-W1-alY" firstAttribute="centerY" secondItem="oLi-eW-njp" secondAttribute="centerY" id="hgD-dQ-coT"/>
                             <constraint firstItem="AZ3-dn-imh" firstAttribute="top" secondItem="NDk-cv-Gan" secondAttribute="bottom" constant="12" id="kmH-mb-t67"/>
                             <constraint firstItem="MMH-Sj-oAb" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leadingMargin" constant="88" id="qHY-eJ-uRG"/>
                             <constraint firstItem="zEq-FU-wV5" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leadingMargin" id="qK1-gC-Mbf"/>
                             <constraint firstItem="NDk-cv-Gan" firstAttribute="centerX" secondItem="QS5-Rx-YEW" secondAttribute="centerX" id="wZo-B0-yM4"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="4i8-N6-yF6"/>
+                                <exclude reference="Dza-vS-Ycp"/>
+                            </mask>
+                        </variation>
                     </view>
                     <tabBarItem key="tabBarItem" systemItem="favorites" id="cPa-gy-q4n"/>
                     <connections>
