@@ -5,6 +5,7 @@
 //  Created by Zhiyun Ren on 4/13/16.
 //  Copyright © 2016 Zhiyun Ren. All rights reserved.
 //
+// code for TCP socket from https://github.com/swiftsocket/SwiftSocket
 
 import UIKit
 import Firebase
