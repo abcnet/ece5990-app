@@ -179,6 +179,7 @@ class SecondViewController: UIViewController {
         ccwButton.enabled = false
         cwButton.enabled = false
         backwardButton.enabled = false
+        self.stopButton.enabled = false
         
         return false
         
