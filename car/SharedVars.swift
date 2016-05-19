@@ -95,4 +95,7 @@ class SharedVars {
             webView.loadRequest(NSURLRequest(URL: NSURL(string: "http://" + SharedVars.ip + ":8080/stream")!))
         }
     }
+    static func stopCamera(webView:UIWebView){
+        
+    }
 }

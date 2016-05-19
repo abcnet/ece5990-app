@@ -72,75 +72,10 @@ class SecondViewController: UIViewController {
 //                print(timeStr)
                 sleep(1)
             }
-            
-//            sleep(1)
-//            
-//            do{
-//                print(SharedVars.ip)
-//                let client:TCPClient = TCPClient(addr: SharedVars.ip, port: 8765)
-//                var (success, errmsg) = client.connect(timeout: 10)
-//                print(success)
-//                print(errmsg)
-//                var rawData = client.read(1024*10)
-//                if (rawData  != nil){
-//                    let data = NSData(bytes: rawData!, length: rawData!.count)
-//                        
-//                    
-//                    
-//                    if let str = String(data: data, encoding: NSUTF8StringEncoding) {
-//                        print(str)
-//                    } else {
-//                        print("not a valid UTF-8 sequence")
-//                    }
-//                }else{
-//                    print("raw data is nil")
-//                }
-//                
-//                (success, errmsg) = client.send(str:"-1 1 5\r\n")
-//                print(success)
-//                print(errmsg)
-//                rawData = client.read(1024*10)
-//                if (rawData  != nil){
-//
-//                    
-//                    let data = NSData(bytes: rawData!, length: rawData!.count)
-//                
-//                    if let str = String(data: data, encoding: NSUTF8StringEncoding) {
-//                        print(str)
-//                       
-//                    } else {
-//                        print("not a valid UTF-8 sequence")
-//                    }
-//                }else{
-//                    print("raw data is nil")
-//                }
-//                
-//                
-//                
-//                (success, errmsg) = client.close()
-//            }
-            
-
+    
             
         })
-//        
-//        let socket = SocketIOClient(socketURL: NSURL(string: "127.0.0.1:8765")!, options: [.Log(true), .ForcePolling(true)])
-//        
-//        socket.on("connect") {data, ack in
-//            print("socket connected")
-//        }
-//        
-//        socket.on("currentAmount") {data, ack in
-//            if let cur = data[0] as? Double {
-//                socket.emitWithAck("canUpdate", cur)(timeoutAfter: 0) {data in
-//                    socket.emit("update", ["amount": cur + 2.50])
-//                }
-//                
-//                ack.with("Got your currentAmount", "dude")
-//            }
-//        }
-//        
-//        socket.connect()
+
         
         
         
@@ -148,19 +83,7 @@ class SecondViewController: UIViewController {
 
     }
     
-//     func aviewDidAppear(animated: Bool) {
-////        super.viewDidAppear(animated)
-////        var filepath: String = NSBundle.mainBundle().pathForResource("vid", ofType: "mp4")
-//        var fileURL: NSURL = NSURL.fileURLWithPath("10.148.1.155:8767")
-//        self.moviePlayerController = MPMoviePlayerController(contentURL: fileURL)
-//        NSNotificationCenter.defaultCenter().addObserver(self, selector: "introMovieFinished:", name: MPMoviePlayerPlaybackDidFinishNotification, object: self.moviePlayerController)
-//        // Hide the video controls from the user
-//        self.moviePlayerController.controlStyle = .None
-//        self.moviePlayerController.prepareToPlay()
-//        self.moviePlayerController.view!.frame = CGRectMake(0, 0, 640 , 480)
-//        self.view!.addSubview(self.moviePlayerController.view!)
-//        self.moviePlayerController.play()
-//    }
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -272,17 +195,7 @@ class SecondViewController: UIViewController {
         }
     }
     @IBAction func connectButtonClicked(sender: AnyObject) {
-//        let (success, errmsg) = SharedVars.client.connect(timeout: 1)
-//        if(success){
-//            SharedVars.connected = true
-//            SharedVars.readUntilEndOfLine()
-//            forwardButton.enabled = true
-//            ccwButton.enabled = true
-//            cwButton.enabled = true
-//            backwardButton.enabled = true
-//
-//        }
-//        self.statusTextField.text = errmsg
+
         SharedVars.tryConnect(self.ipTextFiled, statusLabel:self.statusTextField, button1: self.forwardButton, button2: self.ccwButton, button3: self.cwButton, button4: self.backwardButton, stopButton: self.stopButton, webView: self.webView)
     }
     
@@ -299,29 +212,7 @@ class SecondViewController: UIViewController {
     
    
     @IBAction func startCameraButtonClicked(sender: AnyObject) {
-        //code from http://stackoverflow.com/questions/25932570/how-to-play-video-with-avplayerviewcontroller-avkit-in-swift
-//        var player:AVPlayer!
-        
-//        let steamingURL:NSURL = NSURL(string: "http://p.events-delivery.apple.com.edgesuite.net/1603kjbnadcpjhbasdvpjbasdvpjb/vod2/16ouhbadvouhbasdv03c.mp4")!
-//        let player = AVPlayer(URL: steamingURL)
-//        let avPlayerLayer:AVPlayerLayer = AVPlayerLayer(player: player)
-////        avPlayerLayer.frame = self.view.bounds
-//        avPlayerLayer.frame = CGRectMake(0, 400, 320, 240)
-//        avPlayerLayer.hidden = false
-//        self.view.layer.addSublayer(avPlayerLayer)
-//        
-//        player.play()
-        
-        
-        
-//        let videoURL = NSURL(string: "data://" + SharedVars.ip + ":8767")
-//        let videoURL = NSURL(string: "http://p.events-delivery.apple.com.edgesuite.net/1603kjbnadcpjhbasdvpjbasdvpjb/vod2/16ouhbadvouhbasdv03c.mp4")
-//        let player = AVPlayer(URL: videoURL!)
-//        let playerViewController = AVPlayerViewController()
-//        playerViewController.player = player
-//        self.presentViewController(playerViewController, animated: true) {
-//            playerViewController.player!.play()
-//        }
+
         SharedVars.startCamera(self.webView)
         
         
